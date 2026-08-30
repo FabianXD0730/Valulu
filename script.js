@@ -79,37 +79,49 @@ document.querySelectorAll('.bloque-recuerdo').forEach(bloque => {
 // ==========================================
 // 3. JUEGO DE MEMORIA (3x4 = 12 CARTAS)
 // ==========================================
-const emojis = ['🐶', '🐶', '🍕', '🍕', '✈️', '✈️', '📸', '📸', '🌻', '🌻', '🎮', '🎮'];
+const fotosMemoria = [
+    'pareja1.jpg', 'pareja1.jpg',
+    'pareja2.jpg', 'pareja2.jpg',
+    'pareja3.jpg', 'pareja3.jpg',
+    'pareja4.jpg', 'pareja4.jpg',
+    'pareja5.jpg', 'pareja5.jpg',
+    'pareja6.jpg', 'pareja6.jpg'
+];
+
 let cartasVolteadas = [];
 let parejasEncontradas = 0;
 const tablero = document.getElementById('tablero-memoria');
 
-// Mezclar las cartas al azar
-emojis.sort(() => 0.5 - Math.random());
+// Mezclar las fotos al azar
+fotosMemoria.sort(() => 0.5 - Math.random());
 
 // Generar el tablero HTML
-emojis.forEach((emoji) => {
-    const carta = document.createElement('div');
-    carta.classList.add('carta-memoria');
-    carta.dataset.valor = emoji;
-    carta.innerHTML = `
-        <div class="carta-inner">
-            <div class="carta-frente">❓</div>
-            <div class="carta-dorso">${emoji}</div>
-        </div>
-    `;
-    carta.addEventListener('click', voltearCarta);
-    tablero.appendChild(carta);
-});
+if (tablero) {
+    tablero.innerHTML = ''; // Limpiar el tablero previo
+    fotosMemoria.forEach((foto) => {
+        const carta = document.createElement('div');
+        carta.classList.add('carta-memoria');
+        carta.dataset.valor = foto;
+        carta.innerHTML = `
+            <div class="carta-inner">
+                <div class="carta-frente">❓</div>
+                <div class="carta-dorso">
+                    <img src="${foto}" alt="Recuerdo" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
+            </div>
+        `;
+        carta.addEventListener('click', voltearCarta);
+        tablero.appendChild(carta);
+    });
+}
 
 function voltearCarta() {
-    // Si ya hay dos cartas volteadas o tocamos una que ya está volteada, no hacemos nada
     if (cartasVolteadas.length < 2 && !this.classList.contains('volteada')) {
         this.classList.add('volteada');
         cartasVolteadas.push(this);
 
         if (cartasVolteadas.length === 2) {
-            setTimeout(verificarPareja, 1000); // Esperar 1 segundo para verlas
+            setTimeout(verificarPareja, 800);
         }
     }
 }
@@ -118,19 +130,18 @@ function verificarPareja() {
     const [carta1, carta2] = cartasVolteadas;
     
     if (carta1.dataset.valor === carta2.dataset.valor) {
-        // Es un match
         carta1.classList.add('match');
         carta2.classList.add('match');
         parejasEncontradas++;
         
         if (parejasEncontradas === 6) {
-            document.getElementById('mensajeMemoria').textContent = "¡Ganaste! Tu muy bien.";
+            document.getElementById('mensajeMemoria').textContent = "¡Ganaste! Tienes una memoria perfecta ❤️";
         }
     } else {
         carta1.classList.remove('volteada');
         carta2.classList.remove('volteada');
     }
-    cartasVolteadas = []; // Reiniciar para el siguiente turno
+    cartasVolteadas = [];
 }
 
 
