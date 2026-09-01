@@ -262,7 +262,7 @@ function crearLluvia() {
 // EDITAR AQUÍ: Agrega o cambia las frases que quieras
 const razones = [
     "Por tu forma tan bonita de hacerme sonreír incluso en los días difíciles.",
-    "La felipa.",
+    "La Felipa.",
     "Por la paz que me das cuando estamos juntos.",
     "Por tu preciosa forma de hablar.",
     "Por ser lo mejor en mi mundo.",
@@ -271,7 +271,7 @@ const razones = [
     "Por como me hacer sentir seguro y amado.",
     "La Ricarda.",
     "Tu forma de actuar tan unica.",
-    "Tu inigualable caracter que me encanra.",
+    "Tu inigualable caracter que me encanta.",
     "La Lorena.",
     "Lo increiblemente bella que eres.",
     "Pondria mas pero el codigo ya es muy largo xd.",
