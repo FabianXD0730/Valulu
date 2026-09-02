@@ -43,7 +43,7 @@ btnIngresar.addEventListener('click', () => {
             window.dispatchEvent(new Event('scroll'));
         }, 500);
     } else {
-        mensajeError.textContent = "Esa no es la fecha correcta o el apodo, ¡intenta de nuevo! ❤️";
+        mensajeError.textContent = "No sabes tu apodo o cumpleaños? Te falla? Volvelo a intentar.";
     }
 });
 
@@ -135,7 +135,7 @@ function verificarPareja() {
         parejasEncontradas++;
         
         if (parejasEncontradas === 6) {
-            document.getElementById('mensajeMemoria').textContent = "¡Ganaste! Tienes una memoria perfecta ❤️";
+            document.getElementById('mensajeMemoria').textContent = "¡Ganaste! Tu muy bien.";
         }
     } else {
         carta1.classList.remove('volteada');
@@ -235,7 +235,7 @@ if (btnLluvia) {
 }
 
 function crearLluvia() {
-    const emojis = ['❤️', '💜', '❤️‍🩹', '🗿', '👨🏾‍🦲'];
+    const emojis = ['❤️', '💜', '❤️‍🩹', '🗿', '👨🏾‍🦲','💕','💞','👺'];
     
     // Generar 60 corazones
     for (let i = 0; i < 60; i++) {
@@ -325,7 +325,7 @@ if (btnModoNoche) {
         if (document.body.classList.contains('modo-noche')) {
             btnModoNoche.textContent = '☀️';
         } else {
-            btnModoNoche.textContent = '🌙';
+            btnModoNoche.textContent = '🌑';
         }
     });
 }
@@ -450,7 +450,7 @@ function iniciarCanvas(canvas) {
         }
         
         // Si raspó más del 50%, revela el recuadro entero
-        if (transparentes > (pixeles.length / 4) * 0.5) {
+        if (transparentes > (pixeles.length / 4) * 0.3) {
             raspadoCompletado = true;
             canvas.style.transition = 'opacity 0.3s';
             canvas.style.opacity = '0';
@@ -489,7 +489,7 @@ function finalizarBoleto() {
                 mensajeLimite.classList.remove('hidden');
             }
         }
-    }, 800); // Esperar un poco para que vea el resultado
+    }, 600); // Esperar un poco para que vea el resultado
 }
 
 // Iniciar el juego si hay intentos
